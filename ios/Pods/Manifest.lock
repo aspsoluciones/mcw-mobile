@@ -1,0 +1,28 @@
+PODS:
+  - React (0.22.2):
+    - React/Core (= 0.22.2)
+  - react-native-material-kit (0.3.0):
+    - React
+  - React/Core (0.22.2)
+  - React/RCTText (0.22.2):
+    - React/Core
+  - React/RCTWebSocket (0.22.2):
+    - React/Core
+
+DEPENDENCIES:
+  - react-native-material-kit (from `../node_modules/react-native-material-kit`)
+  - React/Core (from `../node_modules/react-native`)
+  - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
+
+EXTERNAL SOURCES:
+  React:
+    :path: ../node_modules/react-native
+  react-native-material-kit:
+    :path: ../node_modules/react-native-material-kit
+
+SPEC CHECKSUMS:
+  React: be2dc9f9a325f0b4db1fcd3a0cea29c0e00af9b7
+  react-native-material-kit: adc4a8158997748358495d1e95eba28c98bffb75
+
+COCOAPODS: 0.39.0
