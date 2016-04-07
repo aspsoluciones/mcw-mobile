@@ -19,11 +19,18 @@ var Credentials = t.struct({
 
 var options = {};
 
+var _LoginStyle = StyleSheet.create({
+  container : {
+    flex: 1,
+    flexDirection: 'column'
+  }
+});
+
 export default class Login extends Component {
   render() {
 
     return (
-      <View>
+      <View style={_LoginStyle.container}>
         <Form
           ref="form"
           type={Credentials}
