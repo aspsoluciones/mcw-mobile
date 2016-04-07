@@ -22,7 +22,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		3D5A28CB0628479F81A69D1F /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C5532EBA524767BBEDC891 /* Ionicons.ttf */; };
-		3DBBE2D96249A6BFD6114196 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D01D7EA9958BAAE10B917EF /* Pods.framework */; };
 		52D593360DE44E59AAF81EDF /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB502813C94540379A54D380 /* EvilIcons.ttf */; };
 		52EF925A83344FCABAB6FAB2 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6A83436478412B9C289FC6 /* libRNVectorIcons.a */; };
 		69720A98AD6B4480AA77F413 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1059BC9B589F48E9B82ABA46 /* Foundation.ttf */; };
@@ -181,7 +180,6 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				52EF925A83344FCABAB6FAB2 /* libRNVectorIcons.a in Frameworks */,
-				3DBBE2D96249A6BFD6114196 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,6 +771,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
 				INFOPLIST_FILE = mcwMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
@@ -793,6 +792,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
 				INFOPLIST_FILE = mcwMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
@@ -841,7 +841,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -882,7 +882,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
