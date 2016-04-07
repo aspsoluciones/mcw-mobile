@@ -1,10 +1,8 @@
 /**
  * Created by epotignano on 25/02/16.
  */
-import { UidRef, ApiRef, TokenRef } from '../constants/Commons';
+import { ApiRef} from '../constants/Commons';
 const LoginEndpoint = ApiRef + '/oauth/token';
-import Firebase from 'firebase';
-import { getUser } from '../actions/UserActions';
 
 import {
     LOGIN_ATTEMP,

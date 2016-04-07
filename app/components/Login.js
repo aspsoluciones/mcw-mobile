@@ -1,38 +1,67 @@
 'use strict';
 
 import React, { Component, StyleSheet, Text, View } from 'react-native';
-var t = require('tcomb-form-native/lib');
-var i18n = require('tcomb-form-native/lib/i18n/en');
+var t = require('tcomb-form-native');
+import { connect } from 'react-redux'
 var Form = t.form.Form;
-import stylesheet from '../styles/materialdesign';
-import bootstrap from '../templates/bootstrap';
-
-Form.i18n = i18n;
-Form.templates = bootstrap;
-Form.stylesheet = stylesheet;
-
+import { loginUser } from '../actions/AuthActions';
 var Credentials = t.struct({
   username: t.String,
   password: t.String,
-  domain: t.String
-})
+  domain: t.String,
+  rememberMe: t.Boolean
+});
 
-var options = {};
 
-var _LoginStyle = StyleSheet.create({
-  container : {
+var styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
     flex: 1,
-    flexDirection: 'column'
+    justifyContent: 'center',
   }
 });
 
-export default class Login extends Component {
-  render() {
+var options = {
+  fields: {
+    username: {
+      label:'Usuario'
+    },
+   password: {
+     label:'Contraseña'
+    },
+    domain: {
+      label: 'Dominio'
+    }
+  }
+};
 
+var _LoginStyle = StyleSheet.create({
+  container : {
+    flex: 1
+  },
+
+  row: {
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+});
+
+class Login extends Component {
+
+  sendCredentials() {
+    loginUser()
+  }
+
+  render() {
     return (
       <View style={_LoginStyle.container}>
         <Form
-          ref="form"
+          ref="loginForm"
           type={Credentials}
           options={options}
         />
@@ -41,11 +70,11 @@ export default class Login extends Component {
   }
 }
 
-var styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
+var mapStateToProps = function(state) {
+  return {
+    state
+  }
+};
+
+export default connect(mapStateToProps)(Login);
+

@@ -1,20 +1,22 @@
 'use strict';
 
-import React, { Component, StyleSheet, Navigator, Text } from 'react-native';
+import React, { Component, StyleSheet, Navigator, Text, View } from 'react-native';
 import Login from '../components/Login';
 var NavBar =  require('../components/NavBar');
+let ICON_SIZE = 24;
 
-var styles = StyleSheet.create({
-    tabContent: {
+let styles = StyleSheet.create({
+    container: {
         flex: 1,
-        alignItems: "center"
+        backgroundColor: '#fff',
     },
-    tabText: {
-        color: "white",
-        margin: 50,
+    navigator: {
+        paddingTop: 64
     },
-    wrapper: {
-     flex: 1
+    icon: {
+        width: ICON_SIZE,
+        height: ICON_SIZE,
+        resizeMode: 'contain'
     }
 });
 
@@ -34,16 +36,20 @@ export default class Application extends Component {
   }
   render() {
     return (
-      <Navigator style={styles.wrapper} initialRoute={{
-        component: Login,
-        name: 'Login'
-      }}
+        <View style={styles.container}>
+            <Navigator
+                styles={[styles.container, styles.navigator]}
+                initialRoute={{
+                    component: Login,
+                    name: 'Login'
+                }}
+                navigationBar={ NavBar }
+                ref='navigator'
+                configureScene={this.configureScene}
+                renderScene={this.renderScene}
+            />
+        </View>
 
-     navigationBar={ NavBar }
-      ref='navigator'
-      configureScene={this.configureScene}
-      renderScene={this.renderScene}
-      />
     )
   }
 
