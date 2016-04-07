@@ -3,8 +3,6 @@
 import React, { Component, StyleSheet, Navigator, Text } from 'react-native';
 import Login from '../components/Login';
 
-var _something = (<Text>Hola</Text>)
-
 export default class Application extends Component {
   constructor(props) {
     super(props);
