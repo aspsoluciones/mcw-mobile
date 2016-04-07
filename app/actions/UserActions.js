@@ -38,33 +38,4 @@ function userRetrieveSuccess(userData) {
 }
 
 
-export function getUser() {
-  return dispatch => {
-    const _uid = localStorage.getItem(UidRef);
-    let User = new Firebase(FireRef + '/users/' + _uid);
-    User.on('value', (err, snapshot) => {
-      if(err) {
-        dispatch(userRetrieveError(err));
-        Promise.reject(err);
-      }
-      dispatch(userRetrieveSuccess(snapshot.val()))
-    });
-  }
-}
-
-export function updateUser(userData) {
-  //We're talking about a profile owner
-
-  return dispatch => {
-    const _uid = localStorage.getItem(UidRef);
-    let User = new Firebase(FireRef + '/users/' + _uid);
-    User.update(userData, (error) => {
-      if(error) {
-        dispatch(updateUserError(error));
-        Promise.reject(error);
-      }
-      dispatch(updateUserSuccess(userData))
-    })
-  };
-}
 

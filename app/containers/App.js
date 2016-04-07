@@ -3,6 +3,13 @@
 import React, { Component, StyleSheet, Navigator, Text, View } from 'react-native';
 import Login from '../components/Login';
 var NavBar =  require('../components/NavBar');
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import configureStore from '../store/configureStore';
+const store = configureStore();
+
+
 let ICON_SIZE = 24;
 
 let styles = StyleSheet.create({
@@ -36,19 +43,22 @@ export default class Application extends Component {
   }
   render() {
     return (
-        <View style={styles.container}>
-            <Navigator
-                styles={[styles.container, styles.navigator]}
-                initialRoute={{
+        <Provider store={store}>
+            <View style={styles.container}>
+                <Navigator
+                    styles={[styles.container, styles.navigator]}
+                    initialRoute={{
                     component: Login,
                     name: 'Login'
                 }}
-                navigationBar={ NavBar }
-                ref='navigator'
-                configureScene={this.configureScene}
-                renderScene={this.renderScene}
-            />
-        </View>
+                    navigationBar={ NavBar }
+                    ref='navigator'
+                    configureScene={this.configureScene}
+                    renderScene={this.renderScene}
+                />
+            </View>
+        </Provider>
+
 
     )
   }
