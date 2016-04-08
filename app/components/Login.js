@@ -50,12 +50,17 @@ var _LoginStyle = StyleSheet.create({
 
   inputs: {
     marginBottom: 10,
-    flex: .25,
-    backgroundColor: "#FFF"
+    backgroundColor: "#FFF",
+    padding:10,
+    marginLeft:5,
+    marginRight:5,
+    borderRadius: 3,
   },
 
   button: {
     height: 36,
+    marginLeft:5,
+    marginRight:5,
     backgroundColor: colors.secondary,
     borderColor: colors.secondary,
     borderWidth: 1,
@@ -78,12 +83,18 @@ var _LoginStyle = StyleSheet.create({
     color: 'white',
     alignSelf: 'center'
   },
+  formContainer: {
+    flex: 0.3
+  }
 });
 
 class Login extends Component {
 
   sendCredentials() {
-    loginUser()
+    const { dispatch } = this.props;
+    const { loginForm } = this.refs;
+    let credentials = loginForm.getValue();
+    dispatch(loginUser(credentials));
   }
 
   render() {
@@ -92,17 +103,24 @@ class Login extends Component {
         <View style={_LoginStyle.header}>
           <Image style={ { height: 250, width: 250}} resizeMode="contain" source={require('../assets/Logo.png')}/>
         </View>
-        <View style={_LoginStyle.inputs}>
-          <Form
+        <View style={_LoginStyle.formContainer}>
+          <View style={_LoginStyle.inputs}>
+            <Form
                 ref="loginForm"
                 type={Credentials}
                 options={options}
-          />
-        </View>
-        <View>
-          <TouchableHighlight style={_LoginStyle.button} onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={_LoginStyle.buttonText}>Save</Text>
-          </TouchableHighlight>
+            />
+          </View>
+          <View>
+            <TouchableHighlight style={_LoginStyle.button} onPress={this.sendCredentials.bind(this)} underlayColor='#99d9f4'>
+              <Text style={_LoginStyle.buttonText}>Ingresar</Text>
+            </TouchableHighlight>
+
+
+            <TouchableHighlight onPress={this.onPress} underlayColor='#99d9f4'>
+              <Text style={_LoginStyle.buttonText}>¿Olvidó su contraseña?</Text>
+            </TouchableHighlight>
+          </View>
         </View>
       </View>
     );
