@@ -45,7 +45,7 @@ var _LoginStyle = StyleSheet.create({
   header: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex : .1
+    flex : .115
   },
 
   inputs: {
@@ -101,7 +101,7 @@ class Login extends Component {
     return (
       <View style={_LoginStyle.container}>
         <View style={_LoginStyle.header}>
-          <Image style={ { height: 250, width: 250}} resizeMode="contain" source={require('../assets/Logo.png')}/>
+          <Image style={ { height: 250, width: 200}} resizeMode="contain" source={require('../assets/Logo.png')}/>
         </View>
         <View style={_LoginStyle.formContainer}>
           <View style={_LoginStyle.inputs}>
