@@ -75,13 +75,12 @@ function RegisterSuccess(user) {
 }
 
 export function loginUser(credentials) {
-    credentials.grant_type = 'password';
     var _url = Object.keys(credentials).map(function(k) {
         return encodeURIComponent(k) + '=' + encodeURIComponent(credentials[k])
     }).join('&');
-
+    _url += '&grant_type=password';
   return dispatch => {
-    dispatch(LoginAttempt(credentials));
+    // dispatch(LoginAttempt(credentials));
     fetch(LoginEndpoint, {
       'method': 'POST',
       headers: {
@@ -90,12 +89,14 @@ export function loginUser(credentials) {
       },
       body: _url
     }).then(data => {
-      console.log(data);
-        dispatch(loginSuccess(data));
-    }).cacth(error => {
-      console.log(error);
-      dispatch(loginError(error));
-    });
+        if(data.status == 200) {
+            //dispatch(loginSuccess(data));
+            console.warn('Login success')
+        } else {
+            console.warn('Login Error');
+            //dispatch(loginError(data));
+        }
+    })
   }
 }
 
