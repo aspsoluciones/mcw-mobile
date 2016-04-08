@@ -75,7 +75,11 @@ function RegisterSuccess(user) {
 }
 
 export function loginUser(credentials) {
-  credentials.grant_type = 'password';
+    credentials.grant_type = 'password';
+    var _url = Object.keys(credentials).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(credentials[k])
+    }).join('&');
+
   return dispatch => {
     dispatch(LoginAttempt(credentials));
     fetch(LoginEndpoint, {
@@ -84,7 +88,7 @@ export function loginUser(credentials) {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept':'application/json'
       },
-      body: JSON.stringify(credentials)
+      body: _url
     }).then(data => {
       console.log(data);
         dispatch(loginSuccess(data));
